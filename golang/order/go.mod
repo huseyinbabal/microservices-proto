@@ -1,4 +1,4 @@
-module github.com/huseyinbabal/microservices/golang
+module github.com/huseyinbabal/microservices/golang/order
 
 go 1.17
 
