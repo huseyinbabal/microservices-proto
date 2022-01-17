@@ -27,7 +27,7 @@ jobs:
           cd golang/${{ matrix.service }}
           go mod init github.com/huseyinbabal/microservices-proto/golang/${{ matrix.service }} || true
           go mod tidy
-          go ../../
+          cd ../../
           git config --global user.email "huseyinbabal88@gmail.com"
           git config --global user.name "Huseyin BABAL"
           git add .
