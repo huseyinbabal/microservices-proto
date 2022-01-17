@@ -2,26 +2,37 @@ name: "Protocol Buffer Go Stubs Generation"
 on:
   push:
     branches:
-      - '*'
+      - 'v*.*.*'
 jobs:
   protoc:
     name: "Generate"
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: ["order", "payment", "shipping"]
     steps:
       - name: Install Go
         uses: actions/setup-go@v2
         with:
           go-version: 1.17
       - uses: actions/checkout@v2
+      - name: Etract Release Version
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - name: "Generate for Golang"
         run: |
           sudo apt-get install -y protobuf-compiler golang-goprotobuf-dev
           go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
           go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-          protoc --go_out=./golang --go_opt=paths=source_relative --go-grpc_out=./golang --go-grpc_opt=paths=source_relative ./**/*.proto
-          cd golang
-          go mod init github.com/huseyinbabal/microservices-proto
+          protoc --go_out=./golang --go_opt=paths=source_relative --go-grpc_out=./golang --go-grpc_opt=paths=source_relative ./${{ matrix.service }}/*.proto
+          cd golang/${{ matrix.service }}
+          go mod init github.com/huseyinbabal/microservices-proto/golang/${{ matrix.service }}
           go mod tidy
+  publish:
+    name: "Publish changes"
+    steps:
+      - name: "Push to Git"
+        run: |
+          go ../../
           git config --global user.email "huseyinbabal88@gmail.com"
           git config --global user.name "Huseyin BABAL"
           git add .
