@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option go_package = "github.com/huseyinbabal/microservices-proto/payment";
+
+message CreatePaymentRequest {
+    int64 user_id = 1;
+}
+
+message CreatePaymentResponse {
+    int64 payment_id = 1;
+}
+
+service Payment {
+    rpc Create(CreatePaymentRequest) returns (CreatePaymentResponse){}
+}
