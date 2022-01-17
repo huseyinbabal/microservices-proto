@@ -1,8 +1,8 @@
 name: "Protocol Buffer Go Stubs Generation"
 on:
   push:
-    branches:
-      - 'v*.*.*'
+    tags:
+      - v**
 jobs:
   protoc:
     name: "Generate"
