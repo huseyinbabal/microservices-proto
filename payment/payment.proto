@@ -4,6 +4,7 @@ option go_package = "github.com/huseyinbabal/microservices-proto/payment";
 
 message CreatePaymentRequest {
     int64 user_id = 1;
+    float amount = 2;
 }
 
 message CreatePaymentResponse {
