@@ -9,6 +9,7 @@ message CreatePaymentRequest {
 
 message CreatePaymentResponse {
     int64 payment_id = 1;
+    int64 bill_id = 2;
 }
 
 service Payment {
