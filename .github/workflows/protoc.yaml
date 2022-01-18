@@ -32,7 +32,7 @@ jobs:
           git config --global user.name "Huseyin BABAL"
           git fetch --all
           git add .
-          git commit -am "proto update"
+          git commit -am "proto update" || true
           git push origin main
           git tag -fa golang/${{ matrix.service }}/${{ env.RELEASE_VERSION }} -m "golang/${{ matrix.service }}/${{ env.RELEASE_VERSION }}" 
           git push --tags
