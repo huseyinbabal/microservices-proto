@@ -35,4 +35,4 @@ jobs:
           git commit -am "proto update" || true
           git push origin main || true
           git tag -fa golang/${{ matrix.service }}/${{ env.RELEASE_VERSION }} -m "golang/${{ matrix.service }}/${{ env.RELEASE_VERSION }}" 
-          git push --tags
+          git push origin refs/tags/golang/${{ matrix.service }}/${{ env.RELEASE_VERSION }}
