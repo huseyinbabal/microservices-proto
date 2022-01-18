@@ -3,7 +3,7 @@ syntax = "proto3";
 option go_package = "github.com/huseyinbabal/microservices-proto/shipping";
 
 message CreateShippingRequest {
-
+    string address = 1;
 }
 
 message CreateShippingResponse {
