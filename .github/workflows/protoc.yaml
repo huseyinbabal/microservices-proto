@@ -33,6 +33,6 @@ jobs:
           git fetch --all
           git add .
           git commit -am "proto update" || true
-          git push origin main
+          git push origin main || true
           git tag -fa golang/${{ matrix.service }}/${{ env.RELEASE_VERSION }} -m "golang/${{ matrix.service }}/${{ env.RELEASE_VERSION }}" 
           git push --tags
