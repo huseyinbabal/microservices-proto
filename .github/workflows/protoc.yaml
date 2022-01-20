@@ -21,4 +21,5 @@ jobs:
       - name: "Generate for Golang"
         run: |
           chmod +x "${GITHUB_WORKSPACE}/protoc.sh"
+          ls -alh
           "${GITHUB_WORKSPACE}/protoc.sh ${{ matrix.service }} ${{ env.RELEASE_VERSION }}"
