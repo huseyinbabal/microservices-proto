@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SERVICE_NAME=$1
-${SERVICE_NAME}=$2
+RELEASE_VERSION=$2
 
 sudo apt-get install -y protobuf-compiler golang-goprotobuf-dev
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
