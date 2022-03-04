@@ -4,11 +4,17 @@ option go_package = "github.com/huseyinbabal/microservices-proto/order";
 
 message CreateOrderRequest {
     int64 user_id = 1;
-    float amount = 2;
+    repeated order_items = 2;
+     
+    message OrderItem {
+        string product_code = 1;
+        float unit_price = 2;
+        int32 quantity = 3;
+    }
 }
 
 message CreateOrderResponse {
-    int64 order_id = 1;
+    string order_id = 1;
 }
 
 service Order {
