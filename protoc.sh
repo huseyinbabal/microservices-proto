@@ -19,7 +19,7 @@ cd ../../
 git config user.name "$USER_NAME"
 git config user.email "$EMAIL"
 git add . && git commit -am "proto update" || true
-git push
+git push origin HEAD:main
 git tag -fa golang/${SERVICE_NAME}/${RELEASE_VERSION} \
   -m "golang/${SERVICE_NAME}/${RELEASE_VERSION}" 
 git push origin refs/tags/golang/${SERVICE_NAME}/${RELEASE_VERSION}
