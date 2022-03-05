@@ -18,6 +18,7 @@ go mod tidy
 cd ../../
 git config user.name "$USER_NAME"
 git config user.email "$EMAIL"
+git fetch --all && git checkout main
 git add . && git commit -am "proto update" || true
 git push origin HEAD:main
 git tag -fa golang/${SERVICE_NAME}/${RELEASE_VERSION} \
