@@ -14,7 +14,7 @@ message CreateOrderRequest {
 }
 
 message CreateOrderResponse {
-    string order_id = 1;
+    int64 order_id = 1;
 }
 
 service Order {
