@@ -5,18 +5,28 @@ option go_package = "github.com/huseyinbabal/microservices-proto/order";
 message CreateOrderRequest {
     int64 user_id = 1;
     repeated OrderItem order_items = 2;
-     
-    message OrderItem {
-        string product_code = 1;
-        float unit_price = 2;
-        int32 quantity = 3;
-    }
+}
+
+message OrderItem {
+    string product_code = 1;
+    float unit_price = 2;
+    int32 quantity = 3;
 }
 
 message CreateOrderResponse {
     int64 order_id = 1;
 }
 
+message GetOrderRequest {
+    int64 order_id = 1;
+}
+
+message GetOrderResponse {
+    int64 user_id = 1;
+    repeated OrderItem order_items = 2;
+}
+
 service Order {
     rpc Create(CreateOrderRequest) returns (CreateOrderResponse){}
+    rpc Get(GetOrderRequest) returns (GetOrderResponse){}
 }
